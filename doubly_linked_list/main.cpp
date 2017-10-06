@@ -63,9 +63,12 @@ void deleteLast(){
 
 void printNodes(){
     Node *cur = nil->next;
+    int ct = 0;
     while( cur != nil ){
-        cout << cur->key << " ";
+        if(ct) cout << " ";
+        cout << cur->key;
         cur = cur-> next;
+        ct ++;
     }
     cout << endl;
 }
@@ -77,8 +80,9 @@ int main(int argc, const char * argv[]) {
     scanf("%d", &n);
     
     for (i = 0; i < n; i++){
-        scanf("%s%d", action, &key);
+        scanf("%s", action);
         if(action[0] == 'i'){
+            scanf("%d", &key);
             insert(key);
         }
         else if(action[0] == 'd'){
@@ -91,6 +95,7 @@ int main(int argc, const char * argv[]) {
                 }
             }
             else{
+                scanf("%d", &key);
                 Node *t = listSearch(key);
                 deleteNode(t);
             }
